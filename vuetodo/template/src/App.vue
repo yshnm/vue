@@ -1,9 +1,14 @@
 <template>
   <div>
-    <h3>{{ title }}</h3>
+    <h3>My Todo</h3>
+    <input v-model="newTodo" placeholder="Input here..."/>
+    <button @click="insertTodo()"></button>
+    <h5>Todo List</h5>
     <ul>
-      <li><a :href="url1">Vue</a></li>
-      <li><a :href="url2">Vuetify</a></li>
+      <li v-for="(todo, i) in todos" :key="i">
+        {{ todo }}
+        <button @click="deleteTodo(i)">DEL</button>
+      </li>
     </ul>
   </div>
 </template>
@@ -13,21 +18,21 @@
 export default {
   data() {
     return {
-      title: "Vue sites",
-      url1: "https://vuejs.org/",
-      url2: "https://vuejs.org/"
+      newTodo: "",
+      todos: []
+    }
+  },
+  methods: {
+    deleteTodo(i) {
+      this.todos.pop(i);
+    },
+    insertTodo() {
+      if(this.newTodo === "") return
+
+      this.todos.push(this.newTodo)
+
+      this.newTodo = ''
     }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

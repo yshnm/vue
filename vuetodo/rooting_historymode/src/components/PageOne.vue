@@ -14,5 +14,11 @@ export default {
             this.$router.push('/pagetwo')
         }
     },
+    created() {
+      alert("PageOne created");
+    },
+    destroyed() {
+      alert("PageOne destroyed");
+    }
 }
 </script>

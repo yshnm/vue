@@ -6,7 +6,7 @@ import PageTwo from '../components/PageTwo.vue'
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  mode: 'history',
+  // mode: 'history', この行を削除するとhashmodeになる。
   base: process.env.BASE_URL,
   routes: [
     {
